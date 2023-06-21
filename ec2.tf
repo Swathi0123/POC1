@@ -8,6 +8,7 @@ resource "aws_instance" "ec2" {
    subnet_id = "${aws_subnet.rtp03-public_subent_01.id}"
    for_each = toset(["Dev", "Prod"])
    tags = {
+
      Name = "${each.key}"
    }
 lifecycle {
