@@ -7,6 +7,7 @@ resource "aws_route_table" "rtp03-public-rt" {
     }
     tags = {
       Name = "rtp03-public-rt"
+
     }
 }
 
