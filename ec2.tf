@@ -6,7 +6,7 @@ resource "aws_instance" "ec2" {
    // security_groups = ["rtp03-sg"]
    vpc_security_group_ids = ["${aws_security_group.rtp03-sg.id}"]
    subnet_id = "${aws_subnet.rtp03-public_subent_01.id}"
-   for_each = toset(["master", "slave"])
+   for_each = toset(["Dev", "Prod"])
    tags = {
      Name = "${each.key}"
    }
