@@ -14,6 +14,7 @@ resource "aws_instance" "ec2" {
               echo "Hello World" > /var/www/html/index.html
               systemctl restart apache2
               EOF
+
    for_each = toset(["Dev", "Prod"])
    tags = {
      Name = "${each.key}"
