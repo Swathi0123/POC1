@@ -51,5 +51,5 @@ jobs:
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: terraform apply -target=aws_instance.ec2 -auto-approve -input=false
+      run: terraform apply -target=aws_instance.ec2  -target=aws_vpc.rtp03-vpc -target=aws_security_group.rtp03-sg -target=aws_internet_gateway.rtp03-igw -target=aws_route_table.rtp03-public-rt -target=aws_subnet.rtp03-public_subent_01 -auto-approve -input=false
       
