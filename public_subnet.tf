@@ -6,6 +6,7 @@ resource "aws_subnet" "rtp03-public_subent_01" {
     availability_zone = "us-east-1a"
     tags = {
       Name = "rtp03-public_subent_01"
+      
     }
   
 }
