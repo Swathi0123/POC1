@@ -1,7 +1,7 @@
 output "vpc-name" {
     description = "this is vpc id"
     value = "${aws_vpc.rtp03-vpc.id}"
-    
+
   
 }
 
@@ -12,6 +12,7 @@ output "jenkins-public-ip" {
 }
 
 output "slave-public-ip" {
+    
     description = "this is jenkins slave ip"
     value = try(aws_instance.ec2["slave"].public_ip,"")
   
