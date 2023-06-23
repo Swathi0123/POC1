@@ -1,5 +1,6 @@
 provider "aws" {
   region = "us-east-1"
+  git 
 }
 
 terraform {
@@ -7,6 +8,6 @@ terraform {
     bucket = "tf-state-terraform1"
     region = "us-east-1"
     key    = "terraform.tfstate"
-    #profile = "default"
+
   }
   }
