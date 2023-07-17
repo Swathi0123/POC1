@@ -1,6 +1,6 @@
 resource "aws_instance" "kubectl-server" {
   ami                         = "ami-0b94777c7d8bfe7e3"
-  key_name                    = "ubuntusingapore"
+  key_name                    = "sam1"
   instance_type               = "t2.micro"
   user_data                   = file("userdata.sh")
   associate_public_ip_address = true
