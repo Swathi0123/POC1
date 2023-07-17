@@ -17,16 +17,6 @@ resource "aws_eks_node_group" "node-grp" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "pc-node-group"
   node_role_arn   = aws_iam_role.worker.arn
-  user_data       = <<EOF
-
-  #!/bin/bash
-  yum update -y
-  yum install -y httpd
-  systemctl start httpd
-  systemctl enable httpd
-  echo "<h1>Hello World from $(hostname -f)</h1>" >> /var/www/html/index.html
-
-
   subnet_ids      = [aws_subnet.public-1.id, aws_subnet.public-2.id]
   capacity_type   = "ON_DEMAND"
   disk_size       = "20"
