@@ -14,6 +14,7 @@ resource "aws_eks_cluster" "eks" {
     aws_iam_role_policy_attachment.AmazonEKSVPCResourceController,
     #aws_subnet.pub_sub1,
     #aws_subnet.pub_sub2,
+
   ]
 
 }
