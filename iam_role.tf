@@ -1,5 +1,5 @@
 resource "aws_iam_role" "master1" {
-  name = "ed-eks-master"
+  name = "ed-eks-master1"
 
   assume_role_policy = <<POLICY
 {
@@ -33,7 +33,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
 }
 
 resource "aws_iam_role" "worker1" {
-  name = "ed-eks-worker"
+  name = "ed-eks-worker1"
 
   assume_role_policy = <<POLICY
 {
