@@ -1,5 +1,5 @@
-resource "aws_iam_role" "master" {
-  name = "ed-eks-master"
+resource "aws_iam_role" "master34" {
+  name = "ed-eks-master34"
 
   assume_role_policy = <<POLICY
 {
@@ -19,21 +19,21 @@ POLICY
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.master.name
+  role       = aws_iam_role.master34.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role       = aws_iam_role.master.name
+  role       = aws_iam_role.master34.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
-  role       = aws_iam_role.master.name
+  role       = aws_iam_role.master34.name
 }
 
-resource "aws_iam_role" "worker" {
-  name = "ed-eks-worker"
+resource "aws_iam_role" "worker34" {
+  name = "ed-eks-worker34"
 
   assume_role_policy = <<POLICY
 {
@@ -51,8 +51,8 @@ resource "aws_iam_role" "worker" {
 POLICY
 }
 
-resource "aws_iam_policy" "autoscaler" {
-  name   = "ed-eks-autoscaler-policy"
+resource "aws_iam_policy" "autoscaler34" {
+  name   = "ed-eks-autoscaler34-policy"
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -78,40 +78,40 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonSSMManagedInstanceCore" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }
 
 resource "aws_iam_role_policy_attachment" "x-ray" {
   policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }
 resource "aws_iam_role_policy_attachment" "s3" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }
 
-resource "aws_iam_role_policy_attachment" "autoscaler" {
-  policy_arn = aws_iam_policy.autoscaler.arn
-  role       = aws_iam_role.worker.name
+resource "aws_iam_role_policy_attachment" "autoscaler34" {
+  policy_arn = aws_iam_policy.autoscaler34.arn
+  role       = aws_iam_role.worker34.name
 }
 
-resource "aws_iam_instance_profile" "worker" {
-  depends_on = [aws_iam_role.worker]
+resource "aws_iam_instance_profile" "worker34" {
+  depends_on = [aws_iam_role.worker34]
   name       = "ed-eks-worker-new-profile"
-  role       = aws_iam_role.worker.name
+  role       = aws_iam_role.worker34.name
 }

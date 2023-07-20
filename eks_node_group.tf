@@ -1,7 +1,7 @@
 resource "aws_instance" "kubectl-server" {
   ami                         = "ami-0b94777c7d8bfe7e3"
-  key_name                    = "ubuntusingapore"
-  instance_type               = "t2.micro"
+  key_name                    = "ubuntusingapore1"
+  instance_type               = "t".medium
   user_data                   = file("userdata.sh")
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.public-1.id
@@ -21,10 +21,10 @@ resource "aws_eks_node_group" "node-grp" {
   subnet_ids      = [aws_subnet.public-1.id, aws_subnet.public-2.id]
   capacity_type   = "ON_DEMAND"
   disk_size       = "20"
-  instance_types  = ["t2.small"]
+  instance_types  = ["t3.medium"]
 
   remote_access {
-    ec2_ssh_key               = "ubuntusingapore"
+    ec2_ssh_key               = "ubuntusingapore1"
     source_security_group_ids = [aws_security_group.allow_tls.id]
   }
 
