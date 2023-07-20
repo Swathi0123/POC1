@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "eks" {
   name     = "pc-eks"
-  role_arn = aws_iam_role.master012.arn
+  role_arn = aws_iam_role.master78.arn
 
 
   vpc_config {
