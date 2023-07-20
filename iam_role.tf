@@ -1,5 +1,5 @@
-resource "aws_iam_role" "master78" {
-  name = "ed-eks-master78"
+resource "aws_iam_role" "master65" {
+  name = "ed-eks-master65"
 
   assume_role_policy = <<POLICY
 {
@@ -20,29 +20,29 @@ POLICY
 resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 
-  role       = aws_iam_role.master78.name
+  role       = aws_iam_role.master65.name
 
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
 
-  role       = aws_iam_role.master78.name
+  role       = aws_iam_role.master65.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
 
-  role       = aws_iam_role.master78.name
+  role       = aws_iam_role.master65.name
 }
 
-resource "aws_iam_role" "worker78" {
-  name = "ed-eks-worker78"
-  role       = aws_iam_role.master78.name
+resource "aws_iam_role" "worker65" {
+  name = "ed-eks-worker65"
+  role       = aws_iam_role.master65.name
 }
 
-resource "aws_iam_role" "worker78" {
-  name = "ed-eks-worker78"
+resource "aws_iam_role" "worker65" {
+  name = "ed-eks-worker65"
 
   assume_role_policy = <<POLICY
 {
@@ -60,8 +60,8 @@ resource "aws_iam_role" "worker78" {
 POLICY
 }
 
-resource "aws_iam_policy" "autoscaler78" {
-  name   = "ed-eks-autoscaler-policy78"
+resource "aws_iam_policy" "autoscaler65" {
+  name   = "ed-eks-autoscaler-policy65"
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -87,60 +87,60 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonSSMManagedInstanceCore" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 
 }
 
 resource "aws_iam_role_policy_attachment" "x-ray" {
   policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 resource "aws_iam_role_policy_attachment" "s3" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 
-resource "aws_iam_role_policy_attachment" "autoscaler78" {
-  policy_arn = aws_iam_policy.autoscaler78.arn
-  role       = aws_iam_role.worker78.name
+resource "aws_iam_role_policy_attachment" "autoscaler65" {
+  policy_arn = aws_iam_policy.autoscaler65.arn
+  role       = aws_iam_role.worker65.name
 }
 
-resource "aws_iam_instance_profile" "worker78" {
-  depends_on = [aws_iam_role.worker78]
+resource "aws_iam_instance_profile" "worker65" {
+  depends_on = [aws_iam_role.worker65]
   name       = "ed-eks-worker-new-profile"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 
 resource "aws_iam_role_policy_attachment" "s3" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 
 resource "aws_iam_role_policy_attachment" "autoscaler78" {
-  policy_arn = aws_iam_policy.autoscaler78.arn
-  role       = aws_iam_role.worker78.name
+  policy_arn = aws_iam_policy.autoscaler65.arn
+  role       = aws_iam_role.worker65.name
 }
 
-resource "aws_iam_instance_profile" "worker78" {
-  depends_on = [aws_iam_role.worker78]
+resource "aws_iam_instance_profile" "worker65" {
+  depends_on = [aws_iam_role.worker65]
   name       = "ed-eks-worker-new-profile1"
-  role       = aws_iam_role.worker78.name
+  role       = aws_iam_role.worker65.name
 }
 
